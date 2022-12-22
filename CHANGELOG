@@ -1,0 +1,40 @@
+CHANGELOG
+=========
+
+Version 1.0.0.0 (2022-12-12)
+--------------------------
+- Initial release
+- Added new function `is_prime`
+
+Version 1.0.0.1 (2022-12-16)
+--------------------------
+- Replace Rabin-Miller Algo.txt with Rabin-Miller Algo.jpg (the flowchart should explain the Rabin-Miller algorithm better than text)
+- Added new function `gcd`
+- Added new function `mod_inverse`
+- Added new function `eea` (extended Euclidean algorithm)
+- Added new function `mod_exp`
+
+Version 1.0.0.1 (2022-12-19)
+--------------------------
+- Added new function `generate_rsa_keys`
+- Optimized the `generate_prime` function
+```cpp
+long long generate_prime(long long min, long long max) {
+    while (true) {
+        long long n = rand() % (max - min + 1) + min;   // rand() is replaced by Mersenne Twister
+        if (is_prime(n)) return n;
+    }
+}
+```
+- Added new function `generate_4096bit_prime`
+
+Version 1.0.0.2 (2022-12-21)
+--------------------------
+- Added new function `generate_n_bit_long_prime`
+    + Since the Seed remains unchanged, the generated pseudo-random numbers have no meaning (they are all the same number)
+    + The time() function is used but it takes one second to generate the next random number
+    + After shortening the wait time to generate the next random number, I found that sometimes the function generates the same number. However, if this happens later, you can force another different random number to be generated. So this flaw can be improved later. And after the test, it is found that if the bit number of the generated random number is large (such as 4096 and above, the probability of generating the same random number will become smaller) [but the same last two random numbers may be a bug]
+
+Version 1.0.0.3 (2022-12-22)
+--------------------------
+- Added new function `get_gcd`
