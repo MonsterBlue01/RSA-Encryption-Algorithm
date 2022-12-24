@@ -35,6 +35,8 @@ Version 1.0.0.2 (2022-12-21)
     + The time() function is used but it takes one second to generate the next random number
     + After shortening the wait time to generate the next random number, I found that sometimes the function generates the same number. However, if this happens later, you can force another different random number to be generated. So this flaw can be improved later. And after the test, it is found that if the bit number of the generated random number is large (such as 4096 and above, the probability of generating the same random number will become smaller) [but the same last two random numbers may be a bug]
 
-Version 1.0.0.3 (2022-12-22)
+Version 1.0.0.3 (2022-12-23)
 --------------------------
-- Added new function `get_gcd`
+- Added new function `find_coprime`
+- All mpz_t in `generate_n_bit_long_prime` have been replaced with mpz_class (the last time I used C to write this project was mpz_t, but C++ may be more suitable to use mpz_class...)
+- Added new function `generate_key_pair`

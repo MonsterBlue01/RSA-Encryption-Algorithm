@@ -8,4 +8,5 @@ NOTES
 - Add "Contributor" and "Usage Part to README.md (status: cancelled)
 - Rewrite the project using mpz (using long long or int is really not a good idea) (status: unsolved)
 - Remove comments (status: solved)
-- Remember to change the introduction of `gcd` function in READMD.md (status: unsolved)
+- Remember to change the introduction of `gcd` function in READMD.md (status: solved)
+- Start writing encryption and decryption functions. (status: unsolved)
