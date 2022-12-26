@@ -40,3 +40,11 @@ Version 1.0.0.3 (2022-12-23)
 - Added new function `find_coprime`
 - All mpz_t in `generate_n_bit_long_prime` have been replaced with mpz_class (the last time I used C to write this project was mpz_t, but C++ may be more suitable to use mpz_class...)
 - Added new function `generate_key_pair`
+
+Version 1.0.0.4 (2022-12-26)
+--------------------------
+- Added new function `number_to_string`
+- Added new function `string_to_number`
+- Added new function `encrypt`
+- Added new function `decrypt`
+- Improve a little things in the main function

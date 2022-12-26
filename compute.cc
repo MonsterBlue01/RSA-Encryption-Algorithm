@@ -1,6 +1,8 @@
 #include <gmp.h>    
 #include <gmpxx.h>  
 #include <iostream>
+#include <exception>
+#include <fstream>
 
 using namespace std;
 
@@ -50,16 +52,86 @@ void generate_key_pair(int num_bits, mpz_class &e, mpz_class &d, mpz_class &n) {
     n = p * q;
     e = find_coprime(phi);
     mpz_invert(d.get_mpz_t(), e.get_mpz_t(), phi.get_mpz_t());
-    std::cout << "p: " << p << std::endl;
-    std::cout << "q: " << q << std::endl;
-    std::cout << "phi: " << phi << std::endl;
-    std::cout << "n: " << n << std::endl;
-    std::cout << "e: " << e << std::endl;
-    std::cout << "d: " << d << std::endl;
+}
+
+void encrypt(mpz_class &m, mpz_class &e, mpz_class &n, mpz_class &c) {
+    mpz_powm(c.get_mpz_t(), m.get_mpz_t(), e.get_mpz_t(), n.get_mpz_t());
+}
+
+void string_to_number(const std::string& str, mpz_class& n) {
+    n = 0;
+    for (char c : str) {
+        n <<= 8;
+        n += c;
+    }
+}
+
+void number_to_string(const mpz_class& n, std::string& str) {
+    str = "";
+    mpz_class m = n;
+    while (m != 0) {
+        char c = m.get_si() & 0xff;
+        str = c + str;
+        m >>= 8;
+    }
+}
+
+void decrypt(mpz_class &c, mpz_class &d, mpz_class &n, mpz_class &m) {
+    mpz_powm(m.get_mpz_t(), c.get_mpz_t(), d.get_mpz_t(), n.get_mpz_t());
 }
 
 int main() {
-    mpz_class e, d, n;
-    generate_key_pair(4096, e, d, n);
-    return 0;
+    cout << "Do you want to encrypt or decrypt? (e/d): ";
+    char choice;
+    cin >> choice;
+    while (choice != 'e' && choice != 'd') {
+        cout << "Invalid choice. Please enter e or d: ";
+        cin >> choice;
+    }
+    if (choice == 'e') {
+        cout << "Do you want to use a file or standard input? (f/s): ";
+        cin >> choice;
+        while (choice != 'f' && choice != 's') {
+            cout << "Invalid choice. Please enter f or s: ";
+            cin >> choice;
+        }
+        if (choice == 'f') {
+            cout << "Enter file name: ";
+            string file_name;
+            cin >> file_name;
+            ifstream file(file_name);
+            while (!file.is_open()) {
+                cout << "Something is wrong. Please enter a valid file name: ";
+                cin >> file_name;
+                file.open(file_name);
+            }
+            string contents;
+            string line;
+            while (getline(file, line)) {
+                contents += line + "\n";
+            }
+            cout << contents << endl;
+            file.close();
+        } else if (choice == 's') {
+            cout << "s" << endl;
+        } else {
+            throw bad_exception();
+        }
+    } else if (choice == 'd') {
+        cout << "Do you want to use a file or standard input? (f/s): ";
+        cin >> choice;
+        while (choice != 'f' && choice != 's') {
+            cout << "Invalid choice. Please enter f or s: ";
+            cin >> choice;
+        }
+        if (choice == 'f') {
+            cout << "f" << endl;
+        } else if (choice == 's') {
+            cout << "s" << endl;
+        } else {
+            throw bad_exception();
+        }
+    } else {
+        throw bad_exception();
+    }
 }
