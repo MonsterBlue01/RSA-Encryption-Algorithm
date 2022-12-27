@@ -30,24 +30,7 @@ $ ./main
     * Implement: The way this function implements converting numbers to strings is the opposite of converting strings to numbers before. This function will only operate a byte at the same time and convert it to the corresponding character.
     * Function: Since the string was converted to a number earlier, the number needs to be converted to a string now.
 
-## Steps for RSA encryption and decryption:
-
-### Encryption:
-
-1. Generate two prime numbers `p` and `q`
-2. Compute `n = p * q`
-3. Compute `phi(n) = (p - 1) * (q - 1)`
-4. Choose an integer `e` such that `1 < e < phi(n)` and `gcd(e, phi(n)) = 1`
-5. Compute `d` such that `d * e = 1 mod phi(n)`
-6. Encrypt the message `m` using the public key `(e, n)` as follows:
-    - `c = m^e mod n`
-
-### Decryption:
-
-1. Decrypt the message `c` using the private key `(d, n)` as follows:
-    - `m = c^d mod n`
-
-## References:
+## References[^footnote]:
 
 + [RSA Algorithm](https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Key_generation)
 + [Miller-Rabin Primality Test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test)
@@ -58,3 +41,5 @@ $ ./main
 + [Extended Euclidean Algorithm](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm)
 + [Modular Exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method)
 + [Modular Multiplicative Inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse#Computation)
+
+[^footnote]: The references are listed in the order in which they are used in the program.
