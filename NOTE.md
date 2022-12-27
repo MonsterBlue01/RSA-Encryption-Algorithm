@@ -17,5 +17,5 @@ NOTES
 - Test `number_to_string` and `string_to_number` (status: solved)
 - Rewrite the project using mpz (using long long or int is really not a good idea) (status: solved)
 - After all parts are completed, separate the main function from other functions (status: unsolved)
-- Start writing READMD.md (status: unsolved)
+- Complete the introduction of all functions in READMD.md (status: unsolved)
 - Start writing WRITEUP.tex (status: unsolved)

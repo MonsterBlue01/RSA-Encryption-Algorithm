@@ -49,3 +49,4 @@ Version 1.0.0.4 (2022-12-26)
 - Added new function `decrypt`
 - The main function is all completed
 - When decrypting, the standard input does not seem to be useful and may even make mistakes, so it was removed
+- Now part of main.cc is put into functions.cc and functions.hh
