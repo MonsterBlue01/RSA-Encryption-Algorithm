@@ -62,5 +62,5 @@ void number_to_string(const mpz_class& n, std::string& str) {
 }
 
 void decrypt(mpz_class &c, mpz_class &d, mpz_class &n, mpz_class &m) {
-    mpz_powm(m.get_mpz_t(), c.get_mpz_t(), d.get_mpz_t(), n.get_mpz_t());
+    mpz_powm(m.get_mpz_t(), c.get_mpz_t(), d.get_mpz_t(), n.get_mpz_t());   // m = c^d mod n
 }
