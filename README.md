@@ -42,4 +42,4 @@ $ ./main
 + [Modular Exponentiation](https://en.wikipedia.org/wiki/Modular_exponentiation#Right-to-left_binary_method)
 + [Modular Multiplicative Inverse](https://en.wikipedia.org/wiki/Modular_multiplicative_inverse#Computation)
 
-[^footnote]: The references are listed in the order in which they are used in the program.
+[^footnote]: When I first tried to write this project, I used conventional data types (such as int, long, long long). But then I found that using these conventional data types to represent very large prime numbers of 4096bits would be very difficult, and The subsequent operations on these two prime numbers will also become very difficult, so I switched to GMP Library. Although these mathematical theories are no longer necessary to complete the project, I still keep them.
